@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ artist.name }} — archive.wearetrans.lol{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ base_path }}index.html" class="nav_link">home</a>
+    <span class="nav_link active">{{ artist.name | lower }}</span>
+{% endblock %}
+
+{% block content %}
+    <section class="artist_header">
+        {% if artist.avatar %}
+            <img src="{{ artist.avatar }}" alt="{{ artist.name }}" class="artist_avatar_large">
+        {% else %}
+            <div class="no_image artist_avatar_large">?</div>
+        {% endif %}
+        <div class="artist_details">
+            <h2>{{ artist.name }}</h2>
+            {% if artist.description %}
+                <p class="description">{{ artist.description }}</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="albums_section">
+        <h3>albums</h3>
+        {% if artist.albums %}
+            {% for album in artist.albums %}
+                <a href="{{ album.slug }}/index.html" class="album_card">
+                    {% if album.cover %}
+                        <img src="{{ album.slug }}/{{ album.cover }}" alt="{{ album.name }}" class="album_thumb">
+                    {% else %}
+                        <div class="no_image album_thumb">?</div>
+                    {% endif %}
+                    <div class="album_info">
+                        <h4>{{ album.name }}</h4>
+                        <p>{{ album.tracks | length }} track{{ 's' if album.tracks | length != 1 else '' }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="empty_message">no albums.</p>
+        {% endif %}
+    </section>
+{% endblock %}

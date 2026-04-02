@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}archive.wearetrans.lol{% endblock %}
+
+{% block breadcrumb %}
+    <span class="nav_link active">home</span>
+{% endblock %}
+
+{% block content %}
+    <section class="artists_section">
+        {% if artists %}
+            {% for artist in artists %}
+                <a href="{{ artist.slug }}/index.html" class="artist_card">
+                    {% if artist.avatar %}
+                        <img src="{{ artist.slug }}/{{ artist.avatar }}" alt="{{ artist.name }}" class="artist_avatar">
+                    {% else %}
+                        <div class="no_image artist_avatar">?</div>
+                    {% endif %}
+                    <div class="artist_info">
+                        <h2>{{ artist.name }}</h2>
+                        <p>{{ artist.albums | length }} album{{ 's' if artist.albums | length != 1 else '' }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="empty_message">no artists found.</p>
+        {% endif %}
+    </section>
+{% endblock %}

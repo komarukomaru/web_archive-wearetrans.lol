@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}archive.wearetrans.lol{% endblock %}</title>
+    <link rel="stylesheet" href="{{ base_path }}static/style.css">
+</head>
+<body>
+    <div id="main_container">
+        <header>
+            <h1><a href="{{ base_path }}index.html">archive</a></h1>
+            <p class="subtitle">wearetrans music archive</p>
+        </header>
+        <nav class="breadcrumb">
+            {% block breadcrumb %}{% endblock %}
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
