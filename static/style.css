@@ -406,6 +406,23 @@ input[type="range"]::-moz-range-thumb {
     font-size: 1.5rem;
 }
 
+.site_footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+    font-size: 0.8rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.site_footer a {
+    color: #8c8c8c;
+}
+
+.site_footer a:hover {
+    color: #ffffff;
+}
+
 @media (max-width: 480px) {
     .artist_header,
     .album_header {
